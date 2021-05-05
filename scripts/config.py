@@ -16,7 +16,6 @@ class Config(object):
         self.use_cuda = True
         self.gpu = 0
         self.batch_size = 8
-        self.bert_path = './data/bert'
         self.rnn_hidden = 128
         self.bert_embedding = 768
         self.dropout1 = 0.5
