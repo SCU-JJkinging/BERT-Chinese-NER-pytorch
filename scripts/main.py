@@ -50,6 +50,7 @@ def main():
                             config.rnn_layer,
                             config.dropout_ratio,
                             config.dropout1,
+                            config.pretrain_model_name,
                             device).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=config.lr, weight_decay=config.weight_decay)
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer,

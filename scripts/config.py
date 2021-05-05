@@ -25,11 +25,13 @@ class Config(object):
         self.lr = 0.0001
         self.lr_decay = 0.00001
         self.weight_decay = 0.00005
-        self.checkpoint = '../result/checkpoints/NER_12.pth.tar'
+        self.checkpoint = '../result/checkpoints/best.pth.tar'
         self.epochs = 64
         self.max_grad_norm = 10
         self.target_dir = '../result/checkpoints'
         self.patience = 5
+        # 可以换成RoBERTa的中文预训练模型（哈工大提供）
+        self.pretrain_model_name = 'bert-base-chinese'
 
     def update(self, **kwargs):
         for k, v in kwargs.items():

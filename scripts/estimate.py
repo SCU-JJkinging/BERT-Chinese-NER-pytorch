@@ -39,6 +39,9 @@ def find_tag(input, B_label_id=1, I_label_id=2):
                     for num2 in range(num, len(out_id_list)):
                         if out_id_list[num2] == I_label_id and out_id_list[num2-1] == I_label_id:
                             length += 1
+                            if out_id_list[num2] == 9:  # 到达末尾
+                                sentence_tag.append((start_pos, length))
+                                break
                         if out_id_list[num2] == 7:
                             sentence_tag.append((start_pos, length))
                             break

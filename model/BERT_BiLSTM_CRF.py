@@ -11,7 +11,7 @@ from torchcrf import CRF
 
 class BERT_BiLSTM_CRF(nn.Module):
     def __init__(self, tagset_size, embedding_dim, hidden_dim, rnn_layers,
-                lstm_dropout, dropout, device):
+                lstm_dropout, dropout, pretrain_model_name, device):
         '''
         the model of BERT_BiLSTM_CRF
         :param bert_config:
@@ -32,7 +32,7 @@ class BERT_BiLSTM_CRF(nn.Module):
         self.lstm_dropout = lstm_dropout
         self.dropout = dropout
         self.device = device
-        self.word_embeds = BertModel.from_pretrained('bert-base-chinese')
+        self.word_embeds = BertModel.from_pretrained(pretrain_model_name)
         for param in self.word_embeds.parameters():
             param.requires_grad = True
         self.LSTM = nn.LSTM(self.embedding_dim,

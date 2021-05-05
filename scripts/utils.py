@@ -10,6 +10,8 @@ import torch.nn as nn
 from tqdm import tqdm
 from scripts.estimate import Precision, Recall, F1_score
 
+'''工具类函数'''
+
 class InputFeature(object):
     def __init__(self, input_id, label_id, input_mask):
         self.input_id = input_id
