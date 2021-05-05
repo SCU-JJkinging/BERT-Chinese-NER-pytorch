@@ -10,8 +10,7 @@ from transformers import BertModel
 from torchcrf import CRF
 
 class BERT_BiLSTM_CRF(nn.Module):
-    def __init__(self, tagset_size, embedding_dim, hidden_dim, rnn_layers,
-                lstm_dropout, dropout, pretrain_model_name, device):
+    def __init__(self, tagset_size, embedding_dim, hidden_dim, rnn_layers, dropout, pretrain_model_name, device):
         '''
         the model of BERT_BiLSTM_CRF
         :param bert_config:
@@ -29,7 +28,6 @@ class BERT_BiLSTM_CRF(nn.Module):
         self.embedding_dim = embedding_dim
         self.hidden_dim = hidden_dim
         self.rnn_layers = rnn_layers
-        self.lstm_dropout = lstm_dropout
         self.dropout = dropout
         self.device = device
         self.word_embeds = BertModel.from_pretrained(pretrain_model_name)
@@ -39,7 +37,6 @@ class BERT_BiLSTM_CRF(nn.Module):
                             self.hidden_dim,
                             num_layers=self.rnn_layers,
                             bidirectional=True,
-                            dropout=self.lstm_dropout,
                             batch_first=True)
         self._dropout = nn.Dropout(p=self.dropout)
         self.CRF = CRF(num_tags=self.tagset_size, batch_first=True)

@@ -48,8 +48,7 @@ def main():
                             config.bert_embedding,
                             config.rnn_hidden,
                             config.rnn_layer,
-                            config.dropout_ratio,
-                            config.dropout1,
+                            config.dropout,
                             config.pretrain_model_name,
                             device).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=config.lr, weight_decay=config.weight_decay)
@@ -130,7 +129,7 @@ def main():
                         "epochs_count": epochs_count,
                         "train_losses": train_losses,
                         "valid_losses": valid_losses},
-                       os.path.join(config.target_dir, "best.pth.tar"))
+                       os.path.join(config.target_dir, "RoBERTa_best.pth.tar"))
 
         # Save the model at each epoch.
         torch.save({"epoch": epoch,
@@ -140,7 +139,7 @@ def main():
                     "epochs_count": epochs_count,
                     "train_losses": train_losses,
                     "valid_losses": valid_losses},
-                   os.path.join(config.target_dir, "NER_{}.pth.tar".format(epoch)))
+                   os.path.join(config.target_dir, "RoBERTa_NER_{}.pth.tar".format(epoch)))
 
         if patience_counter >= config.patience:
             print("-> Early stopping: patience limit reached, stopping...")

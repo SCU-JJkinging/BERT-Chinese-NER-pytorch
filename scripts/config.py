@@ -18,19 +18,18 @@ class Config(object):
         self.batch_size = 8
         self.rnn_hidden = 128
         self.bert_embedding = 768
-        self.dropout1 = 0.5
-        self.dropout_ratio = 0.5
+        self.dropout = 0.5
         self.rnn_layer = 1
         self.lr = 0.0001
         self.lr_decay = 0.00001
         self.weight_decay = 0.00005
-        self.checkpoint = '../result/checkpoints/best.pth.tar'
+        self.checkpoint = None
         self.epochs = 64
         self.max_grad_norm = 10
-        self.target_dir = '../result/checkpoints'
+        self.target_dir = '../result/checkpoints/RoBERTa_result'
         self.patience = 5
         # 可以换成RoBERTa的中文预训练模型（哈工大提供）
-        self.pretrain_model_name = 'bert-base-chinese'
+        self.pretrain_model_name = 'hfl/chinese-roberta-wwm-ext'
 
     def update(self, **kwargs):
         for k, v in kwargs.items():
